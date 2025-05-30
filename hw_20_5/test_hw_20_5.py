@@ -20,7 +20,6 @@ def test_hw():
     # Совершенно не понял как искать данные элементы .element('#react-select-3-option-2')
     browser.element('#state').click().element('#react-select-3-option-2').click()
     browser.element('#city').click().element('#react-select-4-option-0').click()
-
     #Проверка
     browser.element('#submit').perform(command.js.scroll_into_view).click()
     browser.element('.table-responsive').all('td').even.should(have.exact_texts(f'Test Testovich', 'testemeil@test.com', 'Male', '7999888445', '13 July,1993', 'English', 'Sports', 'test.jpg', 'Earth, Eurasia 4.8.15.22.43', 'Haryana Karnal'))
