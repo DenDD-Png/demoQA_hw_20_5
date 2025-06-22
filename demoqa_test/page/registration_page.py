@@ -43,9 +43,6 @@ class RegistrationPage:
     def hobbies(self, value):
         browser.element(f"//label[contains(text(), '{value}')]").click()
 
-    #def upload_pictures(self, filename):
-        #file_path = str(Path(__file__).parent.parent.joinpath(f'tests/{filename}').absolute())
-
     def test_upload_file(self, value):
         upload_picture(value)
 
