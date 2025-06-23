@@ -1,8 +1,4 @@
-import pytest
-from future.backports.http.cookiejar import month
-from selene import browser, command, have
-from demoqa_test import resource
-from demoqa_test.page import registration_page
+
 from demoqa_test.page.registration_page import RegistrationPage
 from demoqa_test.model.conftest import open_browser
 from demoqa_test.user.user import User
