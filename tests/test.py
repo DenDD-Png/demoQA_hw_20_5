@@ -1,34 +1,34 @@
-import os
 import pytest
+from future.backports.http.cookiejar import month
 from selene import browser, command, have
 from demoqa_test import resource
+from demoqa_test.page import registration_page
 from demoqa_test.page.registration_page import RegistrationPage
+from demoqa_test.model.conftest import open_browser
+from demoqa_test.user.user import User
 
 
 def test_registration(open_browser):
     registration_page = RegistrationPage()
+    user = User(
+        first_name='John',
+        last_name='Doe',
+        email='john.die@gmail.com',
+        gender='Male',
+        user_number='8999888777',
+        year = '1990',
+        month = 'January',
+        day = '01',
+        subjects='English',
+        hobbies='Sports',
+        test_upload_file='test.jpg',
+        address='Earth, Moscow',
+        state='Haryana',
+        city='Karnal'
+    )
 
-    registration_page.first_name('Test')
-    registration_page.last_name('Testovich')
-    registration_page.email('testemeil@test.com')
-    registration_page.gender('Male')
-    registration_page.user_number('7999888445')
-    registration_page.fill_date_of_birth('1993', 'July', '13' )
-    registration_page.subjects('English')
-    registration_page.hobbies('Sports')
-    registration_page.test_upload_file('test.jpg')
-    registration_page.current_address('Earth, Eurasia 4.8.15.22.43')
-    registration_page.state('Haryana')
-    registration_page.city('Karnal')
-    registration_page.submit()
-    registration_page.should_have_registered_user_with(
-        'Test Testovich',
-        'testemeil@test.com',
-        'Male',
-        '7999888445',
-        '13 July,1993',
-        'English',
-        'Sports',
-        'test.jpg',
-        'Earth, Eurasia 4.8.15.22.43',
-        'Haryana Karnal')
+    #Заполнение формы
+    registration_page.register_user(user)
+
+    # Проверка данных в таблице
+    registration_page.check_registered_user(user)
