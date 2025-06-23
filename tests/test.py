@@ -1,6 +1,5 @@
 import os
 import pytest
-
 from selene import browser, command, have
 from demoqa_test import resource
 from demoqa_test.page.registration_page import RegistrationPage
